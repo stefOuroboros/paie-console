@@ -1,9 +1,14 @@
 package dev.paie.ihm;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import dev.paie.service.CotisationService;
 
+@Controller
 public class ListerCotisationsOptionMenu extends OptionMenu {
-
+	
+	@Autowired
 	private CotisationService cotisService;
 
 	public ListerCotisationsOptionMenu(CotisationService cotisService) {
@@ -14,7 +19,11 @@ public class ListerCotisationsOptionMenu extends OptionMenu {
 	@Override
 	public void executer() {
 		System.out.println("Listage en cours");
-		this.cotisService.lister().forEach(cotis -> System.out.println(cotis.getCode()));
+		this.cotisService.lister().forEach(cotis -> System.out.println("Pour la cotisation : " + cotis.getCode() + " du libelle " +
+		cotis.getLibelle() + /*if(cotis.getImposable() ==true) {
+			System.out.println(" étant imposable, ");
+			} else {System.out.println(" n'étant pas imposable, ");
+			}*/ " imposable ("+ cotis.getImposable() +") ayant un taux patronnal de " + cotis.getTauxPatronal() + "et un taux salarial de " + cotis.getTauxSalarial()));
 		
 	}
 
