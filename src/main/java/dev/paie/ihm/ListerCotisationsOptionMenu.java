@@ -20,10 +20,7 @@ public class ListerCotisationsOptionMenu extends OptionMenu {
 	public void executer() {
 		System.out.println("Listage en cours");
 		this.cotisService.lister().forEach(cotis -> System.out.println("Pour la cotisation : " + cotis.getCode() + " du libelle " +
-		cotis.getLibelle() + /*if(cotis.getImposable() ==true) {
-			System.out.println(" étant imposable, ");
-			} else {System.out.println(" n'étant pas imposable, ");
-			}*/ " imposable ("+ cotis.getImposable() +") ayant un taux patronnal de " + cotis.getTauxPatronal() + "et un taux salarial de " + cotis.getTauxSalarial()));
+		cotis.getLibelle() + " imposable ("+ cotis.getImposable() +") ayant un taux patronnal de " + cotis.getTauxPatronal() + "et un taux salarial de " + cotis.getTauxSalarial()));
 		
 	}
 
